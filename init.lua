@@ -9,6 +9,14 @@ local function keyCode(key, modifiers)
    end
 end
 
+local function keyCodeSet(keys)
+   return function()
+      for i, keyEvent in ipairs(keys) do
+         keyEvent()
+      end
+   end
+end
+
 local function remapKey(modifiers, key, keyCode)
    hs.hotkey.bind(modifiers, key, keyCode, nil, keyCode)
 end
@@ -52,15 +60,10 @@ remapKey({'ctrl'}, 'w', keyCode('x', {'cmd'}))
 remapKey({'ctrl'}, 'y', keyCode('v', {'cmd'}))
 remapKey({'ctrl'}, 'd', keyCode('forwarddelete'))
 remapKey({'ctrl'}, 'h', keyCode('delete'))
-
-local function killLine()
-   return function()
-      keyCode('right', {'cmd', 'shift'})()
-      keyCode('x', {'cmd'})()
-   end
-end
-
-remapKey({'ctrl'}, 'k', killLine())
+remapKey({'ctrl'}, 'k', keyCodeSet({
+  keyCode('right', {'cmd', 'shift'}), 
+  keyCode('x', {'cmd'})
+}))
 
 -- コマンド
 remapKey({'ctrl'}, 's', keyCode('f', {'cmd'}))
