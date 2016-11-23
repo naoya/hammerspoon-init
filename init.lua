@@ -53,6 +53,15 @@ remapKey({'ctrl'}, 'y', keyCode('v', {'cmd'}))
 remapKey({'ctrl'}, 'd', keyCode('forwarddelete'))
 remapKey({'ctrl'}, 'h', keyCode('delete'))
 
+local function killLine()
+   return function()
+      keyCode('right', {'cmd', 'shift'})()
+      keyCode('x', {'cmd'})()
+   end
+end
+
+remapKey({'ctrl'}, 'k', killLine())
+
 -- コマンド
 remapKey({'ctrl'}, 's', keyCode('f', {'cmd'}))
 remapKey({'ctrl'}, '/', keyCode('z', {'cmd'}))
