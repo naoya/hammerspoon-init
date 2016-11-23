@@ -46,12 +46,12 @@ remapKey({'ctrl'}, 'n', keyCode('down'))
 remapKey({'ctrl'}, 'p', keyCode('up'))
 remapKey({'ctrl'}, 'e', keyCode('right', {'cmd'}))
 remapKey({'ctrl'}, 'a', keyCode('left', {'cmd'}))
-remapKey({'ctrl'}, 'h', keyCode('delete'))
 
 -- テキスト編集
 remapKey({'ctrl'}, 'w', keyCode('x', {'cmd'}))
 remapKey({'ctrl'}, 'y', keyCode('v', {'cmd'}))
 remapKey({'ctrl'}, 'd', keyCode('forwarddelete'))
+remapKey({'ctrl'}, 'h', keyCode('delete'))
 
 -- コマンド
 remapKey({'ctrl'}, 's', keyCode('f', {'cmd'}))
